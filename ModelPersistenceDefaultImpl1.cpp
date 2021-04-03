@@ -137,6 +137,10 @@ bool ModelPersistenceDefaultImpl1::_loadFields(std::string line) {
 			if (veckeyval[0] != "") { // it should always be, rigth? \todo case for assert?
 				if (veckeyval.size() > 1) {
 					trim((veckeyval[1]));
+                    if ( veckeyval[1].substr(veckeyval[1].length() - 1, 1) == ";" )
+                    {
+                        veckeyval[1] = veckeyval[1].substr(0, veckeyval[1].length() - 1);
+                    }
 					if (veckeyval[1].substr(0, 1) == "\"" && veckeyval[1].substr(veckeyval[1].length() - 1, 1) == "\"") { // remove ""
 						veckeyval[1] = veckeyval[1].substr(1, veckeyval[1].length() - 2);
 					}
@@ -196,6 +200,14 @@ bool ModelPersistenceDefaultImpl1::_loadFields(std::string line) {
 }
 
 void ModelPersistenceDefaultImpl1::_loadSimulatorInfoFields(std::map<std::string, std::string>* fields) {
+    if( fields->find( "name" ) != fields->end() )
+    {
+        _model->getInfos()->setName( fields->at("name") );
+    }
+    if( fields->find( "version" ) != fields->end() )
+    {
+        _model->getInfos()->setVersion( fields->at("version") );
+    }
 }
 
 bool ModelPersistenceDefaultImpl1::load(std::string filename) {

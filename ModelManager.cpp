@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   ModelManager.cpp
  * Author: rafael.luiz.cancian
- * 
+ *
  * Created on 31 de Maio de 2019, 08:37
  */
 
@@ -58,7 +58,11 @@ bool ModelManager::loadModel(std::string filename) {
 	if (res) {
 		this->insert(model);
 		_simulator->getTracer()->trace(Util::TraceLevel::simulatorResult, "Model successfully loaded");
-	} else {
+        if( this->_currentModel == nullptr )
+        {
+            this->_currentModel = model;
+        }
+    } else {
 		model->~Model();
 		_simulator->getTracer()->trace(Util::TraceLevel::simulatorResult, "Model coud not be loaded");
 	}

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   GenesysConsole.h
  * Author: rafael.luiz.cancian
  *
@@ -66,6 +66,12 @@ private:
 	void run(List<std::string>* arguments);
 	void Trace(std::string message);
 	void tryExecuteCommand(std::string inputText, std::string shortPrefix, std::string longPrefix, std::string separator);
+    void _insertPlugins( );
+    // Trace Handlers
+	void _traceHandler(TraceEvent e);
+	void _traceErrorHandler(TraceErrorEvent e);
+	void _traceReportHandler(TraceEvent e);
+	void _traceSimulationHandler(TraceSimulationEvent e);
 private:
 	Simulator* _simulator = new Simulator();
 	std::string _parameter;
@@ -74,4 +80,3 @@ private:
 };
 
 #endif /* GENESYSCONSOLE_H */
-

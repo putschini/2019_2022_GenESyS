@@ -100,10 +100,11 @@ template <> struct Traits<GenesysApplication_if> {
 	//typedef SecondExampleOfSimulation Application;
 	//typedef ThirdExampleOfSimulation Application;
 	//typedef FourthExampleOfSimulation Application;
-	typedef FifthExampleOfSimulation Application;
+	//typedef FifthExampleOfSimulation Application;
 	//typedef FullSimulationOfComplexModel Application;
 	// full aplications
 	//typedef GenesysGUI Application;
+	typedef GenesysConsole Application;
 };
 
 /*
